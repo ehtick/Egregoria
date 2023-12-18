@@ -4,7 +4,7 @@ use egui::FontFamily::{Monospace, Proportional};
 use egui::FontId;
 
 use engine::meshload::load_mesh_with_properties;
-use engine::{Context, FrameContext, GfxContext, SpriteBatchBuilder};
+use engine::{Context, FrameContext, GfxContext, GfxSettings, SpriteBatchBuilder};
 use geom::{vec3, InfiniteFrustrum, LinearColor, Plane, Vec2, Vec3};
 
 use crate::gui::{Gui, Inspected, Shown};
@@ -79,6 +79,8 @@ impl engine::framework::State for State {
             )
             .try_into()
             .unwrap();
+
+        gfx.update_settings(GfxSettings::default());
     }
 
     fn render(&mut self, fc: &mut FrameContext) {
